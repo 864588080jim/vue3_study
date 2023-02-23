@@ -24,4 +24,4 @@ jobs:
         TARGET_REPO: 864588080jim/vue3_study
         TARGET_BRANCH: master
         BUILD_SCRIPT: yarn && yarn doc:build
-        BUILD_DIR: dist/
+        BUILD_DIR: /
