@@ -20,8 +20,8 @@ jobs:
 #          node-version: 16
 #          registry-url: https://npm.pkg.github.com/
       env:
-        ACCESS_TOKEN: ${{ secrets.TOKEN }}
-        TARGET_REPO: username/repo
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TARGET_REPO: 864588080jim/vue3_study
         TARGET_BRANCH: master
         BUILD_SCRIPT: yarn && yarn doc:build
         BUILD_DIR: docs/.vuepress/dist/
