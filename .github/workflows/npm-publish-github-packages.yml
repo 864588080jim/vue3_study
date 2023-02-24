@@ -22,6 +22,6 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.TOKEN }}
         TARGET_REPO: 864588080jim/vue3_study
-        TARGET_BRANCH: show
+        TARGET_BRANCH: newbranch
         BUILD_SCRIPT: yarn && yarn doc:build
         BUILD_DIR: /
