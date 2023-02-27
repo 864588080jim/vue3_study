@@ -86,7 +86,7 @@ jobs:
     #       tar zxvf release.tgz
     - name: deploy file to server
       # if: steps.yarn-cache.outputs.cache-hit != 'true'
-      uses: 864588080jim/SFTP-Deploy-Action@v2.0 
+      uses: 864588080jim/SFTP-Deploy-Action@v1.0 
       with:  
         username: ${{ secrets.USERNAME }}   #ssh user name
         server: ${{ secrets.HOST }} #引用之前创建好的secret
