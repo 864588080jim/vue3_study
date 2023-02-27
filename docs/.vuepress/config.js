@@ -1,5 +1,5 @@
 module.exports = {
-  // base: '/dist/', /* 基础虚拟路径 */
+  base: '/typescript/', /* 基础虚拟路径 */
   dest: 'docs/dist', /* 打包文件基础路径, 在命令所在目录下 */
   title: 'Vue3+TS 快速上手123', // 标题
   description: '尚硅谷前端研究院', // 标题下的描述

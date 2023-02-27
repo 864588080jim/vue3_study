@@ -1,27 +1,97 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Build and Deploy
-on: [push]
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+
     steps:
+
+    # 下载源码
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
 
+    
+    # 命中缓存  
+    - uses: actions/cache@v2
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+          
+ 
+    # 使用node
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
 
-    - name: vuepress-deploy
-      uses: jenkey2011/vuepress-deploy@master
-#      with:
-#          node-version: 16
-#          registry-url: https://npm.pkg.github.com/
-      env:
-        ACCESS_TOKEN: ${{ secrets.TOKEN }}
-        TARGET_REPO: 864588080jim/vue3_study
-        TARGET_BRANCH: newbranch
-        BUILD_SCRIPT: yarn && yarn doc:build
-        BUILD_DIR: /
+    # 未命中缓存才初始化安装
+    - name: Install
+      if: steps.yarn-cache.outputs.cache-hit != 'true'
+      run: yarn install
+    
+    # 打包构建
+    - name: Build
+    #  if: steps.yarn-cache.outputs.cache-hit != 'true'
+      run: yarn doc:build
+    # - run: tar -zcvf release.tgz dist
+    
+    
+
+    # 发布 Release
+    # - name: Create Release
+    #   id: create_release
+    #   uses: actions/create-release@main
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+    #   with:
+    #     tag_name: ${{ github.ref }}
+    #     release_name: Release ${{ github.ref }}
+    #     draft: false
+    #     prerelease: false
+
+    # 上传构建结果到 Release
+    # - name: Upload Release Asset
+    #   id: upload-release-asset
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+    #     asset_path: ./release.tgz
+    #     asset_name: release.tgz
+    #     asset_content_type: application/x-tgz
+
+    # 部署到服务器
+    # - name: Deploy
+    #   uses: appleboy/ssh-action@master
+    #   with:
+    #     host: ${{ secrets.HOST }}
+    #     username: ${{ secrets.USERNAME }}
+    #     key: ${{ secrets.KEY }}
+    #     port: ${{ secrets.PORT }}
+    #     script: |
+    #       cd /usr/web/heartdub.com.cn/home
+    #       wget https://github.com/heartdubByp/testdome/releases/latest/download/release.tgz -O release.tgz
+    #       tar zxvf release.tgz
+    - name: deploy file to server
+      # if: steps.yarn-cache.outputs.cache-hit != 'true'
+      uses: wlixcc/SFTP-Deploy-Action@v1.0 
+      with:  
+        username: ${{ secrets.USERNAME }}   #ssh user name
+        server: ${{ secrets.HOST }} #引用之前创建好的secret
+        port: ${{ secrets.PORT }}
+        ssh_private_key: ${{ secrets.KEY }} #引用之前创建好的secret
+        local_path: ./docs/dist/* # 对应我们项目build的文件夹路径
+        remote_path: /home/node-koa-pm2/views/typescript
+
