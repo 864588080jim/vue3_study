@@ -86,7 +86,7 @@ jobs:
     #       tar zxvf release.tgz
     - name: deploy file to server
       # if: steps.yarn-cache.outputs.cache-hit != 'true'
-      uses: wlixcc/SFTP-Deploy-Action@v1.0 
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4 
       with:  
         username: ${{ secrets.USERNAME }}   #ssh user name
         server: ${{ secrets.HOST }} #引用之前创建好的secret
