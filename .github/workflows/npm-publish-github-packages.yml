@@ -93,5 +93,5 @@ jobs:
         port: ${{ secrets.PORT }}
         ssh_private_key: ${{ secrets.KEY }} #引用之前创建好的secret
         local_path: ./docs/dist/* # 对应我们项目build的文件夹路径
-        remote_path: /home/node-koa-pm2/views/typescript
+        remote_path: /home/node-koa-pm2/views/typescript/
 
