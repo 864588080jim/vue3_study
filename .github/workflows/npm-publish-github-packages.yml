@@ -84,14 +84,22 @@ jobs:
     #       cd /usr/web/heartdub.com.cn/home
     #       wget https://github.com/heartdubByp/testdome/releases/latest/download/release.tgz -O release.tgz
     #       tar zxvf release.tgz
-    - name: deploy file to server
-      # if: steps.yarn-cache.outputs.cache-hit != 'true'
-      uses: 864588080jim/SFTP-Deploy-Action@v2.0 
-      with:  
-        username: ${{ secrets.USERNAME }}   #ssh user name
-        server: ${{ secrets.HOST }} #引用之前创建好的secret
-        port: ${{ secrets.PORT }}
-        ssh_private_key: ${{ secrets.KEY }} #引用之前创建好的secret
-        local_path: ./docs/dist # 对应我们项目build的文件夹路径
-        remote_path: /home/node-koa-pm2/views/typescript
-
+    # - name: deploy file to server
+    #   # if: steps.yarn-cache.outputs.cache-hit != 'true'
+    #   uses: 864588080jim/SFTP-Deploy-Action@v2.0 
+    #   with:  
+    #     username: ${{ secrets.USERNAME }}   #ssh user name
+    #     server: ${{ secrets.HOST }} #引用之前创建好的secret
+    #     port: ${{ secrets.PORT }}
+    #     ssh_private_key: ${{ secrets.KEY }} #引用之前创建好的secret
+    #     local_path: ./docs/dist # 对应我们项目build的文件夹路径
+    #     remote_path: /home/node-koa-pm2/views/typescript
+    - name: Deploy
+      uses: easingthemes/ssh-deploy@v2.0.7
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.KEY }}
+        ARGS: "-avz --delete"
+        SOURCE: "./docs/dist"
+        REMOTE_HOST: ${{ secrets.HOST }}
+        REMOTE_USER: ${{ secrets.USERNAME }} 
+        TARGET: "/home/node-koa-pm2/views/typescript"
