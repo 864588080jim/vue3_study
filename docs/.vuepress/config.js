@@ -8,13 +8,13 @@ module.exports = {
     nav: [
       { text: '官网', link: 'http://www.atguigu.com' },
       { text: '谷粒学院', link: 'http://www.gulixueyuan.com/' },
-      { 
-        text: '学习路线', 
+      {
+        text: '学习路线',
         items: [
           { text: '前端', link: 'http://www.atguigu.com/web/' },
           { text: 'Java', link: 'http://www.atguigu.com/kecheng.shtml' },
           { text: '大数据', link: 'http://www.atguigu.com/bigdata/' }
-        ] 
+        ]
       },
       { text: '全套视频资料', link: 'http://www.gulixueyuan.com/' },
     ],
@@ -22,7 +22,7 @@ module.exports = {
       '00_课程介绍',
       {
         title: '一.TypeScript快速上手',
-        collapsable: false, 
+        collapsable: false,
         children: [
           {
             title: '初识 TypeScript', // 标题
@@ -49,8 +49,8 @@ module.exports = {
 
       {
         title: '二.Vue3快速上手',
-        collapsable: false, 
-        children: [ 
+        collapsable: false,
+        children: [
           'chapter3/01_认识Vue3',
           'chapter3/02_创建vue3项目',
         ]
