@@ -99,7 +99,7 @@ jobs:
       env:
         SSH_PRIVATE_KEY: ${{ secrets.KEY }}
         ARGS: "-avz --delete"
-        SOURCE: "./docs/dist"
+        SOURCE: "./docs/dist/*"
         REMOTE_HOST: ${{ secrets.HOST }}
         REMOTE_USER: ${{ secrets.USERNAME }} 
         TARGET: "/home/node-koa-pm2/views/typescript"
