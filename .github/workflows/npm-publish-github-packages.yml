@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ pinia ]
 
 
 jobs:
@@ -102,6 +102,6 @@ jobs:
         SOURCE: "./docs/dist/*"
         REMOTE_HOST: ${{ secrets.HOST }}
         REMOTE_USER: ${{ secrets.USERNAME }} 
-        TARGET: "/home/node-koa-pm2/views/typescript"
+        TARGET: "/home/node-koa-pm2/views/pinia"
 
 
