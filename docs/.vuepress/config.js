@@ -4,7 +4,7 @@ module.exports = {
   title: '学习笔记', // 标题
   description: 'markdown学习笔记', // 标题下的描述
   themeConfig: { // 主题配置
-    logo: '/images/logo.jpeg',
+    logo: '/images/titleLogo.png',
     nav: [
       { text: 'javascript',
       items: [
