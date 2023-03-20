@@ -1,10 +1,10 @@
 module.exports = {
   base: '/pinia/', /* 基础虚拟路径 */
   dest: 'docs/dist', /* 打包文件基础路径, 在命令所在目录下 */
-  title: 'Vue3+TS 快速上手', // 标题
-  description: '尚硅谷前端研究院', // 标题下的描述
+  title: 'Pinia 快速上手', // 标题
+  description: 'Pinia学习笔记', // 标题下的描述
   themeConfig: { // 主题配置
-    // logo: '/images/logo.png',
+    logo: '/images/logo.jpeg',
     nav: [
       { text: 'js', link: 'http://spaceofbing.cn/js' },
       { text: 'es6', link: 'http://spaceofbing.cn/es6' },
@@ -21,66 +21,23 @@ module.exports = {
     sidebar: [ // 左侧导航
       '00_课程介绍',
       {
-        title: '一.TypeScript快速上手',
+        title: 'Pinia原理浅析',
         collapsable: false,
-        children: [
-          {
-            title: '初识 TypeScript', // 标题
-            children: [ // 下级列表
-              'chapter1/01_初识TS',
-              'chapter1/02_安装TS',
-              'chapter1/03_HelloWorld',
-              'chapter1/04_webpack打包',
-            ]
-          },
-          {
-            title: 'TypeScript 常用语法',
-            children: [
-              'chapter2/1_type',
-              'chapter2/2_interface',
-              'chapter2/3_class',
-              'chapter2/4_function',
-              'chapter2/5_generic',
-              'chapter2/6_other',
-            ]
-          },
+        children: [ // 下级列表
+          'chapter1/vite原理浅析-dev篇（对比webpack）',
+          'chapter1/vite原理浅析-prd篇（对比rollup和webpack）',
         ]
       },
 
       {
-        title: '二.Vue3快速上手',
+        title: 'Pinia基础使用',
         collapsable: false,
         children: [
-          'chapter3/01_认识Vue3',
-          'chapter3/02_创建vue3项目',
+          'chapter2/Pinia使用state、getters、actions',
+          'chapter2/Pinia模块化',
+          'chapter2/Pinia持久化存储'
         ]
-      },
-      {
-        title: '三.Composition API',
-        collapsable: false,
-        children: [
-          'chapter4/01_Composition API_常用部分',
-          'chapter4/02_Composition API_其它部分',
-          'chapter4/03_手写组合API',
-          'chapter4/04_Composition VS Option',
-        ]
-      },
-      {
-        title: '四.其它新组合和API',
-        collapsable: false,
-        children: [
-          'chapter5/01_新组件',
-          'chapter5/02_其他新API',
-        ]
-      },
-      {
-        title: '五.Vue3综合案例',
-        collapsable: false,
-        children: [
-          'chapter6/',
-        ]
-      },
-      'chapter7/快速搭建在线文档'
+      }
     ]
   },
 
