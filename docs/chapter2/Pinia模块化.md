@@ -4,11 +4,37 @@
 
 ## 一、目录结构
 
+    store/index.js
     store/user.js
     store/shop.js
     ...
 
-## 二、store/user.js
+## 二、main.js
+```js
+import { createApp } from "vue"
+import store from "./store/index.js"
+
+import App from "./App.vue"
+import router from "./router"
+
+const app = createApp(App)
+
+app.use(createPinia())
+app.use(router)
+app.use(store)
+app.mount("#app")
+```
+
+
+## 三、store/index.js
+
+```js
+import { createPinia } from 'pinia'
+const store = createPinia()
+export default store
+```
+
+## 四、store/user.js
 
 ```js
 import { defineStore } from 'pinia'
@@ -32,7 +58,7 @@ export const user = defineStore({
 })
 ```
 
-## 三、某组件使用
+## 五、某组件使用
 
 ```js
 <template>

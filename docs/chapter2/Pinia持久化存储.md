@@ -37,15 +37,15 @@ export const useUserStore = defineStore({
 ```
 
 ## 四、自定义 key
-> 数据默认存在 sessionStorage 里，并且会以 store 的 id 作为 key。
+> 数据默认存在 sessionStorage 里，并且默认会以 store 的 id 作为sessionStorage存储时的key。
 
 ```js
 persist: {
   enabled: true,
   strategies: [
     {
-      key: 'my_user',
-      storage: localStorage,
+      key: 'my_user',//修改存储时候的key
+      storage: localStorage,//修改存储方式
     }
   ]
 }
@@ -68,7 +68,7 @@ persist: {
   strategies: [
     {
       storage: localStorage,
-      paths: ['name', 'age']
+      paths: ['name', 'age']//指定存储字段，如果不配置这个字段默认是state中的所有字段都进行存储
     }
   ]
 }
