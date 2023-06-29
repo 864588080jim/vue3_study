@@ -1,8 +1,8 @@
 module.exports = {
-  base: '/typescript/', /* 基础虚拟路径 */
+  base: '/vue3/', /* 基础虚拟路径 */
   dest: 'docs/dist', /* 打包文件基础路径, 在命令所在目录下 */
-  title: 'Vue3+TS 快速上手', // 标题
-  description: '尚硅谷前端研究院', // 标题下的描述
+  title: 'Vue3', // 标题
+  description: '', // 标题下的描述
   themeConfig: { // 主题配置
     // logo: '/images/logo.png',
     nav: [
