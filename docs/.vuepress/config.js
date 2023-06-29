@@ -7,9 +7,12 @@ module.exports = {
     logo: '/images/titleLogo.png',
     nav: [
       { text: 'javascript',
-      items: [
-        { text: 'typescript', link: 'http://spaceofbing.cn/typescript' },
-      ]},
+        items: [
+          { text: 'js', link: 'http://spaceofbing.cn/js' },
+          { text: 'es6', link: 'http://spaceofbing.cn/es6' },
+          { text: 'typescript', link: 'http://spaceofbing.cn/typescript' }
+        ]
+      },
       {
         text: 'vue3',
         items: [
@@ -18,6 +21,8 @@ module.exports = {
           { text: 'pinia', link: 'http://spaceofbing.cn/pinia' }
         ]
       },
-    ]
+      { text: 'node', link: 'http://spaceofbing.cn/node' },
+      { text: 'interview', link: 'http://spaceofbing.cn/interview' },
+    ],
   }
 }
